@@ -1,23 +1,23 @@
 {
   "name": "session-pouchdb-store",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "PouchDB express session store. Can do realtime session data synchronization via PouchDB server",
-	"author": "David Gómez Matarrodona <solzimer@gmail.com>",
-	"email": "solzimer@gmail.com",
-	"license": "MIT",
-	"repository": "solzimer/session-pouchdb-store",
+  "author": "David Gómez Matarrodona <solzimer@gmail.com>",
+  "email": "solzimer@gmail.com",
+  "license": "MIT",
+  "repository": "solzimer/session-pouchdb-store",
   "main": "index.js",
-	"keywords": [
-		"pouchdb",
-		"couchdb",
-		"session",
-		"store",
-		"express",
-		"expressjs",
-		"middleware",
-		"realtime",
-		"synchronization"
-	],
+  "keywords": [
+    "pouchdb",
+    "couchdb",
+    "session",
+    "store",
+    "express",
+    "expressjs",
+    "middleware",
+    "realtime",
+    "synchronization"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
