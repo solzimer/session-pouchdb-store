@@ -19,7 +19,7 @@
     "synchronization"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "dependencies": {
     "express-session": "^1.15.6",
@@ -28,6 +28,9 @@
     "pouchdb-adapter-memory": "^6.4.1"
   },
   "devDependencies": {
-    "express": "^4.16.2"
+    "assert": "^1.4.1",
+    "express": "^4.16.2",
+    "express-pouchdb": "^2.3.7",
+    "mocha": "^5.0.0"
   }
 }
