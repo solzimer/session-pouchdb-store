@@ -28,7 +28,6 @@
     "pouchdb-adapter-memory": "^6.4.1"
   },
   "devDependencies": {
-    "assert": "^1.4.1",
     "express": "^4.16.2",
     "express-pouchdb": "^2.3.7",
     "mocha": "^5.0.0"
