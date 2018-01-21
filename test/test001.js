@@ -76,6 +76,20 @@ describe('Basic features', function() {
 			});
 		});
 	});
+
+	describe('#clear(cb)', function() {
+		it('Should clear session store', function(done) {
+			store.clear((err)=>{
+				if(err) done(err);
+				else {
+					store.length((err,len)=>{
+						assert(len==0);
+						done(err);
+					});
+				}
+			});
+		});
+	});
 });
 
 after(function(){
