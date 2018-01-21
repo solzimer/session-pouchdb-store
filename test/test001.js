@@ -24,4 +24,15 @@ describe('Basic features', function() {
 		});
 	});
 
+	describe('#touch(sid, cb)', function() {
+		it('Should refresh session', function() {
+			let oldts = session1.$ts;
+			store.touch(SID1, session1, function(err, sess){
+				store.get(SID1, function(err, sess){
+					assert(oldts<sess.$ts);
+				});
+			});
+		});
+	});
+
 });
