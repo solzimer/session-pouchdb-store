@@ -6,8 +6,9 @@ const
 	SID1 = "12345678",
 	SID2 = "abcdefgh";
 
+var store = new PouchStore();
+
 describe('Basic features', function() {
-	var store = new PouchStore();
 	var session1 = {data : {key1:"val1", key2:"val2"}}
 
 	describe('#set(sid, session, cb)', function() {
@@ -34,5 +35,8 @@ describe('Basic features', function() {
 			});
 		});
 	});
-
 });
+
+after(function(){
+	process.exit(0);
+})

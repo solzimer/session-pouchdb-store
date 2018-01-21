@@ -2,6 +2,8 @@
 
 A [PouchDB](https://pouchdb.com/) session store for [express.js](http://expressjs.com/).
 
+[![Build Status](https://https://travis-ci.org/solzimer/session-pouchdb-store.svg?branch=master)](https://travis-ci.org/solzimer/session-pouchdb-store)
+
 ## Features
 * Compatible with PouchDB and CouchDB (or any database that uses the CouchDB API).
 * Realtime session data synchronization between processes (if PouchDB/CouchDB server is used)
