@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "express-session": "^1.15.6",
-    "extend": "^3.0.1",
-    "pouchdb": "^6.4.3",
+    "extend": "^3.0.2",
+    "pouchdb": "^7.0.0",
     "pouchdb-adapter-memory": "^6.4.1"
   },
   "devDependencies": {
