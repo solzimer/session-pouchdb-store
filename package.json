@@ -1,6 +1,6 @@
 {
   "name": "session-pouchdb-store",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "PouchDB express session store. Can do realtime session data synchronization via PouchDB server",
   "author": "David Gómez Matarrodona <solzimer@gmail.com>",
   "email": "solzimer@gmail.com",
