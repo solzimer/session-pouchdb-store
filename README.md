@@ -74,9 +74,10 @@ In order to synchronize session data, the current version of the store requires 
 ## API
 ### new PouchSession(pouchInstance, options)
 Creates a new store instance. The first argument can be one of the following:
-* **null** If no arguments is passed, a default in-memory instance is created.
+* **undefined** If no arguments is passed, a default in-memory instance is created.
 * **PouchDB instance** The PouchDB instance that will be used by the store.
 * **URL string** A URL string to a remote PouchDB/CouchDB server.
+* **string** A simple string is used as a file path for leveldb storage
 
 Options is an object that allows overriding some store behaviours:
 * **maxIdle** Max time in ms a session can go idle. When this time exceeds, the session is remove from the store cache. Note that a session can be idle and still be a valid session; session expiration is defined by the express-session module. The purpose of this parameter is to release from memory sessions that are not being used.
