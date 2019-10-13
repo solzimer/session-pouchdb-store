@@ -1,13 +1,14 @@
 const
 	PouchStore = require("../"),
 	promisify = require("util").promisify,
+	debug = require('debug')('mocha-test'),
 	assert = require('assert');
 
 const
 	SID1 = "12345678",
-	SID2 = "abcdefgh";
+	SID2 = "87654321";
 
-let store = new PouchStore();
+let store = new PouchStore(process.env.URL||undefined);
 let storeSet = promisify(store.set.bind(store));
 
 describe('Basic features', function() {
@@ -43,8 +44,11 @@ describe('Basic features', function() {
 	describe('#destroy(sid, cb)', function() {
 		it('Should destroy session', function(done) {
 			store.destroy(SID1, function(err) {
-				store.get(SID1, function(err,data){
-					if(data!=null) done(new Error("Data must be null"));
+				debug('test destroy',err);
+				store.all(function(err,list){
+					debug('test destroy all',err,list);
+					let idx = list.findIndex(s=>s.id==SID1);
+					if(idx>=0) done(new Error("Data must be null"));
 					else done(err);
 				});
 			});
@@ -53,18 +57,24 @@ describe('Basic features', function() {
 
 	describe('#all(cb)', function() {
 		it('Should get all sessions', function(done) {
-			let s1 = {data:{s1:"s1"}};
-			let s2 = {data:{s2:"s2"}};
+			let s1 = {data:{s1:"s1"},$commit:true};
+			let s2 = {data:{s2:"s2"},$commit:true};
 
-			Promise.
-				all([storeSet(SID1,s1),storeSet(SID2,s2)]).
-				then(()=>{
-					store.all((err,data)=>{
-						assert(data.length==2);
+			store.clear(function(){
+				Promise.
+					all([storeSet(SID1,s1),storeSet(SID2,s2)]).
+					then(()=>{
+						store.all((err,data)=>{
+							debug('all',err,data);
+							assert(data.length==2);
+							done(err);
+						});
+					}).
+					catch(function(err){
+						debug('all',err);
 						done(err);
 					});
-				}).
-				catch(done);
+			});
 		});
 	});
 

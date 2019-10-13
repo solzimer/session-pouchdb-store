@@ -4,26 +4,36 @@ const
 	PouchSession = require("../");
 
 let app = express();
+let router = express.Router();
 
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-	store : new PouchSession("http://localhost:10070/sessions")
+	path:'/',
+	store : new PouchSession("http://localhost:5984/sessions")
 }));
 
-app.get("/get",(req,res)=>{
+app.use('/',router);
+
+// This ensures every other path has the same session cookie
+router.get("/",(req,res,next)=>{
+	debug(req.session.id);
+	next();
+});
+
+router.get("/get",(req,res)=>{
 	res.json(req.session);
 });
 
-app.get("/set/:key/:val",(req,res)=>{
+router.get("/set/:key/:val",(req,res)=>{
 	req.session[req.params.key] = req.params.val;
 	res.json(req.session);
 });
 
-app.get("/get/:key",(req,res)=>{
+router.get("/get/:key",(req,res)=>{
 	res.json(req.session[req.params.key]);
 });
 
 
-app.listen(8080);
+app.listen(process.env['PORT'] || 8080);
